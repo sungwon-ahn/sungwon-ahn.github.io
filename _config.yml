@@ -17,4 +17,3 @@ description              : "An amazing website."
 url                      : "https://sungwon-ahn.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-(뒷부분 생략)

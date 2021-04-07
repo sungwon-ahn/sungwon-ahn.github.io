@@ -1,60 +1,19 @@
-<!doctype html>
 <html>
 <head>
-<style>
-    body{ background-color:white; }
-    #canvas{border:1px solid red; }
-</style>
-<script>
-window.onload=(function(){
-
-    // canvas related variables
-    var canvas=document.getElementById("canvas");
-    var ctx=canvas.getContext("2d");
-    var cw=canvas.width;
-    var ch=canvas.height;
-
-    // animation related variables
-    var minX=20;        // Keep the image animating 
-    var maxX=250;       // between minX & maxX
-    var x=minX;         // The current X-coordinate
-    var speedX=1;       // The image will move at 1px per loop 
-    var direction=1;    // The image direction: 1==righward, -1==leftward
-    var y=20;           // The Y-coordinate
-
-    // Load a new image
-    // IMPORTANT!!! You must give the image time to load by using img.onload!
-    var img=new Image();
-    img.onload=start;
-    img.src="https://mdn.mozillademos.org/files/1456/Canvas_sun.png";
-    //img.src="https://dl.dropboxusercontent.com/u/139992952/stackoverflow/sun.png";
-    function start(){
-        // the image is fully loaded sostart animating
-        requestAnimationFrame(animate);
-    }
-
-    function animate(time){
-
-        // clear the canvas
-        ctx.clearRect(0,0,cw,ch);
-
-        // draw
-        ctx.drawImage(img,x,y);
-
-        // update
-        x += speedX * direction;
-        // keep "x" inside min & max
-        if(x<minX){ x=minX; direction*=-1; }
-        if(x>maxX){ x=maxX; direction*=-1; }
-
-        // request another loop of animation
-        requestAnimationFrame(animate);
-    }
-
-}); // end $(function(){});
-</script>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
 </head>
 <body>
-    <canvas id="canvas" width=512 height=512></canvas>
+	<div id="map" style="width:500px;height:400px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d8fee59a1e17584e58c81db5532db473"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
 </body>
 </html>
